@@ -43,6 +43,7 @@ module.exports = function(){
     }
 
     function deleteUserById(userId){
+        var user;
         console.log("in user.model.js");
         for(user in users){
             if(users[user]._id==userId){
@@ -54,6 +55,7 @@ module.exports = function(){
     }
 
     function updateUserById(userId, preUser){
+        var user;
         console.log("in user.model.js");
         for(user in users){
             if(users[user]._id==userId){
