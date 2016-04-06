@@ -1,0 +1,41 @@
+<h2>{{hotelDetails.name}}</h2>
+
+<div class="col-md-4">
+    <img ng-src="{{hotelDetails.image_url}}" height="300px" width="200px" class="pull-left"/>
+</div>
+
+<div class="col-md-8">
+    <div class="table-responsive">
+        <table class="table table-striped">
+
+            <tbody>
+
+            <tr>
+                <td>Phone Number:</td>
+                <td>{{hotelDetails.phone}}</td>
+
+            </tr>
+            <tr>
+                <td>Rating</td>
+                <td>{{hotelDetails.rating}}/5</td>
+
+            </tr>
+            <tr>
+                <td>Number of Reviews</td>
+                <td>{{hotelDetails.review_count}}</td>
+
+            </tr>
+
+            <tr>
+                <td>Address</td>
+                <td>{{hotelDetails.location.display_address.toString()}}</td>
+
+            </tr>
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

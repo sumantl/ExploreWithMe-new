@@ -1,0 +1,32 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
+    <h1 class="page-header">User Details</h1>
+
+    <ul class="nav nav-tabs">
+        <li><a href="#/forms">Forms</a></li>
+        <li class="active" ><a href="#/fields">Fields</a></li>
+    </ul>
+    <div class="panel-body" ng-controller="UserDetailController">
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="row" ng-repeat="field in model.fields">
+                    <div class = "row">
+                        <div class="col-sum-4">
+                            <label for="inputFirstName" class="control-label">{{field.label}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sum-4">
+                            <textarea class="form-control" placeholder={{field.placeholder}} rows="5" id="comment"></textarea>
+                        </div>
+                        <div class="col-sum-4">
+                        </div>
+                        <div class="col-sum-4">
+                            <button class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#myModal"></button>
+                            <a href="#" class="glyphicon glyphicon-plus"></a>
+                            <a href="#" class="glyphicon glyphicon-remove"></a>
+                            <a href="#" class="glyphicon glyphicon-align-justify"></a>
+                        </div>
+                    </div>
+
+
+                </div>

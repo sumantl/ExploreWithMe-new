@@ -1,0 +1,57 @@
+
+<h1 class="page-header">Admin</h1>
+
+<ul class="nav nav-tabs">
+
+    <li><a href="/admin">Users</a></li>
+    <li><a href="#/comments">Comment</a></li>
+    <li class="active"><a href="#/itinerary">Itinerary</a></li>
+    <li><a href="#/destination">Destinaion</a></li>
+    <li><a href="#/recipe">Recipe</a></li>
+    <li><a href="#/restaurants">Restaurants</a></li>
+
+</ul>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped" ng-controller="ItineraryController">
+        <thead>
+        <tr>
+            <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Itinerary id</th>
+            <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Itinerary Name</th>
+            <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <input ng-model="itinerary._id" type="text" class="form-control" id="inputRecipeId" placeholder="name">
+            </td>
+            <td>
+                <input ng-model="itinerary.name" type="text" class="form-control" id="inputRecipeName" placeholder="name">
+            </td>
+
+            <td>
+                <a ng-click="addItinerary(itinerary)" class="glyphicon glyphicon-plus"></a>
+                <a ng-click="updateItinerary(itinerary)" class="glyphicon glyphicon-ok"></a>
+            </td>
+        </tr>
+
+        <tr ng-repeat="itinerary in scopeItineraryList"
+            ng-class="{'success' : $index == selectedFormIndex}">
+            <td>
+                {{itinerary._id}}
+            </td>
+            <td>
+                {{itinerary.name}}
+            </td>
+            <td>
+                <a ng-click="deleteItinerary($index)" class="glyphicon glyphicon-remove"></a>
+                <a  ng-click="selectItinerary($index)" class="glyphicon glyphicon-pencil"></a>
+            </td>
+
+        </tr>
+
+
+        </tbody>
+    </table>
+</div>
