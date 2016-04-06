@@ -20,6 +20,8 @@ module.exports = function(){
         }
     }
     function findUserByCredentials(username, password){
+
+        var user;
         console.log("in user.model.js--------user: "+username+"password: "+password);
         for(user in users){
             if(users[user].username==username && users[user].password==password)
