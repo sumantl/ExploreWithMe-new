@@ -21,7 +21,7 @@ module.exports = function(){
     }
     function findUserByCredentials(username, password){
         console.log("in user.model.js--------user: "+username+"password: "+password);
-        for(user in users){
+        for(var user = 0;user <users.length; user++){
             if(users[user].username==username && users[user].password==password)
                 return users[user];
         }
