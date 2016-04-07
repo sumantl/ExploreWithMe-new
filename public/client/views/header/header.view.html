@@ -21,6 +21,16 @@
                     <a href="#/food">Food Search</a>
                 </li>
 
+                <li ng-show="user" ng-class="{'active' : $location.url().indexOf('home') > 0}">
+                    <a href="{$location.path()}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publish <span class="caret"></span></a href="#">
+                    <ul class="dropdown-menu">
+                        <li><a href="#/add-recipe">Add Recipe</a></li>
+                        <li><a href="#/add-restaurant">Add Restaurant</a></li>
+                        <li><a href="#/add-destination">Add Destination</a></li>
+                        <li><a href="#/add-itinerary">Add Itinerary</a></li>
+                    </ul>
+                </li>
+
 
                 <li ng-class="{'active' : $location.url().indexOf('login') > 0}">
                     <a ng-show="!user" href="#/login">Login</a>
