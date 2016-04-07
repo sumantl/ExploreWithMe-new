@@ -8,6 +8,21 @@
                 <input ng-model="destination.name" type="text" class="form-control" id="inputname" placeholder="Destination Name">
             </div>
         </div>
+        <div class="form-group">
+            <label for="inputTime" class="col-sm-2 control-label">Address</label>
+            <div class="col-sm-10">
+                <input ng-model="destination.prepTime" type="text" class="form-control" id="inputAddress" placeholder="Address">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputZip" class="col-sm-2 control-label">ZipCode</label>
+            <div class="col-sm-10">
+                <input ng-model="destination.zip" type="number" class="form-control" id="inputZip" placeholder="ZipCode">
+            </div>
+        </div>
+
+
+
 
         <div class="form-group">
             <label class="col-sm-2 control-label">Description</label>
@@ -22,15 +37,10 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputTime" class="col-sm-2 control-label">Preparation Time</label>
-            <div class="col-sm-10">
-                <input ng-model="recipe.prepTime" type="number" class="form-control" id="inputTimr" placeholder="Preparation Time">
-            </div>
-        </div>
+
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button ng-click="addRecipe(recipe)"  class="btn btn-primary btn-block">Submit Recipe</button>
+                <button ng-click="addDestination(destination)"  class="btn btn-primary btn-block">Submit Destination</button>
             </div>
         </div>
     </form>
