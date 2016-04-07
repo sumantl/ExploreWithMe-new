@@ -47,6 +47,14 @@
                 .when("/recipe", {
                     templateUrl: "views/admin/recipe.view.html"
                 })
+                .when("/add-recipe", {
+                    templateUrl: "views/form/add-recipe.view.html",
+                    controller : "AddRecipeController"
+                })
+                .when("/add-restaurant", {
+                    templateUrl: "views/form/add-restaurant.view.html",
+                    controller : "AddRestaurantController"
+                })
                 .when("/itinerary", {
                     templateUrl: "views/admin/itinerary.view.html"
                 })
