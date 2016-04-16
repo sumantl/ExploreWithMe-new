@@ -6,7 +6,7 @@
     <li><a href="#/admin">Users</a></li>
     <li><a href="#/comments">Comment</a></li>
     <li><a href="#/itinerary">Itinerary</a></li>
-    <li><a href="#/destination">Destinaion</a></li>
+    <li><a href="#/destination">Destination</a></li>
     <li><a href="#/recipe">Recipe</a></li>
     <li class="active"><a href="#/restaurants">Restaurants</a></li>
 
@@ -45,7 +45,7 @@
                 {{restaurant.name}}
             </td>
             <td>
-                <a ng-click="deleteRestaurant($index)" class="glyphicon glyphicon-remove"></a>
+                <a ng-click="deleteRestaurant(restaurant)" class="glyphicon glyphicon-remove"></a>
                 <a  ng-click="selectRestaurant($index)" class="glyphicon glyphicon-pencil"></a>
             </td>
 

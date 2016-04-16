@@ -8,20 +8,36 @@
 
 
         var api = {
-            createCommentForUser: createCommentForUser,
+            createComment: createComment,
             findAllCommentForUser: findAllCommentForUser,
             deleteCommentById: deleteCommentById,
-            updateCommentById: updateCommentById,
+            findCommentByEntity : findCommentByEntity,
+            findAllComments : findAllComments,
+            updateCommentById: updateCommentById
         };
         return api;
 
-        function createCommentForUser(userId, comment, callback) {
+
+        function findCommentByEntity(entityId){
+
+            return $http.get("/api/comment/:"+entityId);
+        }
+
+        function findAllComments(){
+            return $http.get('/api/comment');
+        }
+
+
+        function createComment(username, comment) {
             var tempComment ={};
             angular.copy(comment,tempComment);
-            tempComment._id=(new Date).getTime();
-            tempComment.userId = userId;
-            commentsList.push(tempComment);
-            callback(tempComment);
+            tempComment.username = username;
+            console.log("comment");
+            console.log(tempComment);
+
+            return $http.post("/api/comment", tempComment);
+
+
         }
 
         function findAllCommentForUser(userId, callback) {
@@ -34,16 +50,9 @@
             callback(userCommentsList);
         }
 
-        function deleteCommentById(commentId, callback) {
+        function deleteCommentById(commentId) {
 
-
-            for (var i = 0; i < commentsList.length; i++) {
-                if (commentsList[i]._id == commentId) {
-                    commentsList.splice(i, 1);
-
-                }
-            }
-            callback(commentsList);
+            return $http.delete('/api/comment/'+commentId);
         }
 
         function updateCommentById (commentId, newComment, callback){

@@ -12,17 +12,20 @@
 
 
         function initialiseRecipe() {
-            getUserRecipe(currentUser._id);
+            getAllRecipe();
         }
 
         initialiseRecipe();
 
 
-        function getUserRecipe(userId) {
+        function getAllRecipe() {
 
-            RecipeService.findAllRecipeForUser(userId, function (response) {
-                angular.copy(response, currentUserRecipes);
-            });
+            RecipeService
+                .findAllRecipe()
+                .then(function(response){
+                    $scope.scopeRecipeList = response.data;
+
+                });
         }
 
         $scope.addRecipe = function (recipe) {
@@ -47,13 +50,15 @@
         };
 
 
-        $scope.deleteRecipe = function (index) {
+        $scope.deleteRecipe = function (recipe) {
 
 
-            RecipeService.deleteRecipeById(currentUserRecipes[index]._id, function (response) {
-                getUserRecipe(currentUser._id);
-            });
-            $scope.recipe={};
+            RecipeService
+                .deleteRecipeById(recipe._id)
+                .then(function (response){
+                    $scope.scopeRecipeList = response.data;
+
+                });
         };
 
 

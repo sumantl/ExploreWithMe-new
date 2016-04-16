@@ -15,40 +15,33 @@
         var api = {
             createRecipeForUser: createRecipeForUser,
             findAllRecipeForUser: findAllRecipeForUser,
+            findAllRecipe : findAllRecipe,
             deleteRecipeById: deleteRecipeById,
             updateRecipeById: updateRecipeById,
         };
         return api;
 
-        function createRecipeForUser(userId, recipe, callback) {
-            var tempRecipe ={}
-            angular.copy(recipe,tempRecipe);
-            tempRecipe._id=(new Date).getTime();
-            tempRecipe.userId = userId;
-            recipesList.push(tempRecipe);
-            callback(tempRecipe)
+        function createRecipeForUser(userId, recipe) {
+            recipe.userId = userId;
+           return $http.post('/api/recipe',recipe);
         }
 
-        function findAllRecipeForUser(userId, callback) {
-            var userRecipesList=[];
-            for(var i = 0; i<recipesList.length; i++){
-                if(recipesList[i].userId == userId){
-                    userRecipesList.push(recipesList[i]);
-                }
-            }
-            callback(userRecipesList);
+
+        function findAllRecipe(){
+            return $http.get('/api/recipe');
         }
 
-        function deleteRecipeById(recipeId, callback) {
+        function findAllRecipeForUser(userId) {
+
+           return $http.get('/api/recipe/'+userId);
+
+        }
+
+        function deleteRecipeById(recipeId) {
+
+            return $http.delete('/api/recipe/'+recipeId);
 
 
-            for (var i = 0; i < recipesList.length; i++) {
-                if (recipesList[i]._id == recipeId) {
-                    recipesList.splice(i, 1);
-
-                }
-            }
-            callback(recipesList);
         }
 
         function updateRecipeById (recipeId, newRecipe, callback){

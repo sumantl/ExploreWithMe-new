@@ -21,12 +21,21 @@ module.exports = function(app, userModel){
             else
                 res.json(findUserByUserName(req.query.username));
         }
-        else
-            res.json(userAccess.findAllUsers());
+        else{
+            userModel.findAllUsers()
+                .then(function (userList){
+                   res.json(userList);
+                });
+
+        }
     }
 
     function  deleteUserById(req, res){
-        res.json(userAccess.deleteUserById(req.params.id))
+        userModel
+            .deleteUserById(req.params.id)
+            .then(function (response){
+                res.json(response);
+            });
 
     }
 

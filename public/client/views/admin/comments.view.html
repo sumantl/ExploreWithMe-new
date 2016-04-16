@@ -3,7 +3,7 @@
 
 <ul class="nav nav-tabs">
 
-    <li><a href="/admin">Users</a></li>
+    <li><a href="#/admin">Users</a></li>
     <li class="active"><a href="#/comments">Comment</a></li>
     <li><a href="#/itinerary">Itinerary</a></li>
     <li><a href="#/destination">Destinaion</a></li>
@@ -12,11 +12,11 @@
 
 </ul>
 <div class="table-responsive">
-    <table class="table table-bordered table-striped" ng-controller="CommentController">
+    <table class="table table-bordered table-striped" ng-controller="AdminCommentController">
         <thead>
         <tr>
             <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Comment id</th>
-            <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Comment Name</th>
+            <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Comment Description</th>
             <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Action</th>
         </tr>
         </thead>
@@ -26,7 +26,7 @@
                 <input ng-model="comment._id" type="text" class="form-control" id="inputRecipeId" placeholder="name">
             </td>
             <td>
-                <input ng-model="comment.name" type="text" class="form-control" id="inputRecipeName" placeholder="name">
+                <input ng-model="comment.description" type="text" class="form-control" id="inputRecipeName" placeholder="name">
             </td>
 
             <td>
@@ -35,16 +35,16 @@
             </td>
         </tr>
 
-        <tr ng-repeat="comment in scopeCommentList"
+        <tr ng-repeat="comment in scopeAdminCommentList"
             ng-class="{'success' : $index == selectedFormIndex}">
             <td>
                 {{comment._id}}
             </td>
             <td>
-                {{comment.name}}
+                {{comment.description}}
             </td>
             <td>
-                <a ng-click="deleteComment($index)" class="glyphicon glyphicon-remove"></a>
+                <a ng-click="deleteComment(comment)" class="glyphicon glyphicon-remove"></a>
                 <a  ng-click="selectComment($index)" class="glyphicon glyphicon-pencil"></a>
             </td>
 

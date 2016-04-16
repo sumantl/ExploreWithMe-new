@@ -60,7 +60,7 @@ module.exports = function(db, mongoose) {
     function findAllUsers() {
         var deferred = q.defer();
 
-        User.findOne(
+        User.find(
             function(err, userList){
                 deferred.resolve(userList);
             });
@@ -68,8 +68,6 @@ module.exports = function(db, mongoose) {
     }
 
     function createUser(user) {
-
-        user._id = uuid.v1();
 
         var deferred = q.defer();
 
@@ -83,9 +81,11 @@ module.exports = function(db, mongoose) {
     function deleteUserById(userId) {
         var deferred = q.defer();
 
-        User.remove(userId,
-            function(err, user){
-                deferred.resolve(user);
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        console.log(userId);
+        User.remove({'_id':userId},
+            function(err, message){
+                deferred.resolve(message);
             });
         return deferred.promise;
 

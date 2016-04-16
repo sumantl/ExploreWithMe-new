@@ -2,7 +2,7 @@
     <h1 class="page-header">Admin</h1>
 
     <ul class="nav nav-tabs">
-        <li class="active" ><a href="#">Users</a></li>
+        <li class="active" ><a href="#/admin">Users</a></li>
         <li><a href="#/comments">Comments</a></li>
         <li><a href="#/destination">Destination</a></li>
         <li><a href="#/itinerary">Itinerary</a></li>
@@ -17,23 +17,23 @@
                 <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Action</th>
             </tr>
             <tr>
-                <td><input ng-model="user._id" type="text" class="form-control" id="inputUserId3" placeholder="Id"></td>
-                <td><input ng-model="user.username" type="text" class="form-control" id="inputUsername3" placeholder="Name"></td>
-                <td> <a ng-click="addUser(user)" class="glyphicon glyphicon-plus" aria-hidden="true"></a>
-                    <a ng-click="updateUser(user)" class="glyphicon glyphicon-ok" aria-hidden="true"></a></td>
+                <td><input ng-model="tempUser._id" type="text" class="form-control" id="inputUserId3" placeholder="Id"></td>
+                <td><input ng-model="tempUser.username" type="text" class="form-control" id="inputUsername3" placeholder="Name"></td>
+                <td> <a ng-click="addUser(tempUser)" class="glyphicon glyphicon-plus" aria-hidden="true"></a>
+                    <a ng-click="updateUser(tempUser)" class="glyphicon glyphicon-ok" aria-hidden="true"></a></td>
             </tr>
-            <tr ng-repeat="user in allUsers"
+            <tr ng-repeat="tempUser in allUsers"
                 ng-class="{'success' : $index == selectedFormIndex}">
                 <td>
-                    <a href="#/admin.view.html/{{user._id}}/userdetails">{{user._id}}</a>
+                    <a href="#/admin.view.html/{{user._id}}/userdetails">{{tempUser._id}}</a>
                 </td>
 
                 <td>
-                    {{user.name}}
+                    {{tempUser.username}}
                 </td>
 
-                <td> <a ng-click="deleteUser($index)" class="glyphicon glyphicon-remove" aria-hidden="true" color="black"></a>
-                    <a ng-click="selectUser($index)" class="glyphicon glyphicon-pencil" aria-hidden="true"></a></td>
+                <td> <a ng-click="deleteUser(tempUser)" class="glyphicon glyphicon-remove" aria-hidden="true" color="black"></a>
+                    <a ng-click="selectUser(tempUser)" class="glyphicon glyphicon-pencil" aria-hidden="true"></a></td>
             </tr>
         </table>
     </div>

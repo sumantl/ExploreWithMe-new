@@ -57,8 +57,8 @@
              */
 
         function deleteUserById(userId) {
-            console.log("in user.service.client.js");
-            return $http.delete("/api/user" + userId);
+            console.log("User Delete");
+            return $http.delete("/api/user/" + userId);
         }
         /*
             for(var i=0;i<userInfo.length;i++){

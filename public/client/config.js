@@ -38,7 +38,7 @@
                     controller: "PlaceController"
                 })
                 .when("/userdetils", {
-                    templateUrl: "views/admin/user.details.html",
+                    templateUrl: "views/admin/user-detail.view.html",
                     controller: "UserDetailController"
                 })
                 .when("/restaurants", {

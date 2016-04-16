@@ -24,6 +24,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 var db = mongoose.connect(connectionString);
 
 app.use(express.static(__dirname + '/public'));
+app.disable('etag');
 
 app.get('/', function(req, res){
   res.redirect('/client');

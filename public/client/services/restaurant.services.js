@@ -13,42 +13,26 @@
         ];
 
         var api = {
-            createRestaurantForAdmin: createRestaurantForAdmin,
-            findAllRestaurantForAdmin: findAllRestaurantForAdmin,
+            addRestaurant: addRestaurant,
+            findAllRestaurant: findAllRestaurant,
             deleteRestaurantById: deleteRestaurantById,
             updateRestaurantById: updateRestaurantById,
         };
         return api;
 
-        function createRestaurantForAdmin(userId, restaurant, callback) {
-            var tempRestaurant ={}
-            angular.copy(restaurant,tempRestaurant);
-            tempRestaurant._id=(new Date).getTime();
-            tempRestaurant.userId = userId;
-            restaurantsList.push(tempRestaurant);
-            callback(tempRestaurant)
+        function addRestaurant(userId, restaurant) {
+            restaurant.userId = userId;
+            return $http.post('/api/restaurant',restaurant);
         }
 
-        function findAllRestaurantForAdmin(userId, callback) {
-            var userRestaurantsList=[];
-            for(var i = 0; i<restaurantsList.length; i++){
-                if(restaurantsList[i].userId == userId){
-                     userRestaurantsList.push(restaurantsList[i]);
-                }
-            }
-            callback(userRestaurantsList);
+        function findAllRestaurant() {
+           return $http.get('/api/restaurant');
         }
 
-        function deleteRestaurantById(restaurantId, callback) {
+        function deleteRestaurantById(restaurantId) {
 
 
-            for (var i = 0; i < restaurantsList.length; i++) {
-                if (restaurantsList[i]._id == restaurantId) {
-                    restaurantsList.splice(i, 1);
-
-                }
-            }
-            callback(restaurantsList);
+           return $http.delete('/api/restaurant/'+restaurantId);
         }
 
         function updateRestaurantById (restaurantId, newRestaurant, callback){

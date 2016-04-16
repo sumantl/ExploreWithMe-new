@@ -1,28 +1,34 @@
 (function() {
     angular
         .module('ExploreWithMeApp')
-        .controller('CommentController', CommentController);
+        .controller('AdminCommentController', AdminCommentController);
 
-    function CommentController($scope, $rootScope, $location, CommentService) {
+    function AdminCommentController($scope, $rootScope, $location, CommentService) {
 
         $scope.selIndex = null;
-        $scope.scopeCommentList = [];
+        $scope.scopeAdminCommentList = [];
         var currentUser = $rootScope.user;
-        var currentUserComments = $scope.scopeCommentList;
+        var commentList = $scope.scopeAdminCommentList;
 
 
         function initialiseComment() {
-            getUserComment(currentUser._id);
+            getAllComments();
         }
 
         initialiseComment();
 
 
-        function getUserComment(userId) {
+        function getAllComments() {
 
-            CommentService.findAllCommentForUser(userId, function (response) {
-                angular.copy(response, currentUserComments);
-            });
+            CommentService
+                .findAllComments()
+                .then(function (response){
+                    console.log(response);
+
+                    $scope.scopeAdminCommentList = response.data;
+
+                });
+
         }
 
         $scope.addComment = function (comment) {
@@ -48,13 +54,15 @@
         };
 
 
-        $scope.deleteComment = function (index) {
+        $scope.deleteComment = function (comment) {
 
 
-            CommentService.deleteCommentById(currentUserComments[index]._id, function (response) {
-                getUserComment(currentUser._id);
-            });
-            $scope.comment={};
+            CommentService
+                .deleteCommentById(comment._id)
+                .then(function (response){
+                    getAllComments();
+                });
+            //$scope.comment={};
         };
 
 

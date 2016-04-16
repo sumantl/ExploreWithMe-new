@@ -3,11 +3,23 @@
         .module('ExploreWithMeApp')
         .controller('AddRecipeController',AddRecipeController);
 
-    function AddRecipeController($scope, $rootScope, $location, UserService) {
+    function AddRecipeController($scope, $rootScope, $location, RecipeService) {
 
-        $scope.register=function(user) {
 
-        }
-    };
+        var userId = $rootScope.user._id;
+
+
+
+        $scope.addRecipe = function(recipe) {
+
+            RecipeService
+                .createRecipeForUser(userId, recipe)
+                .then(function (response){
+                    //$location.path();
+                });
+
+
+           }
+    }
 
 })();

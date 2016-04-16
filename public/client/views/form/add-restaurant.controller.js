@@ -3,11 +3,21 @@
         .module('ExploreWithMeApp')
         .controller('AddRestaurantController',AddRestaurantController);
 
-    function AddRestaurantController($scope, $rootScope, $location, UserService) {
+    function AddRestaurantController($scope, $rootScope, $location, RestaurantService) {
 
-        $scope.addRestaurant=function(restaurant) {
 
+        var userId = $rootScope.user._id;
+
+
+
+        $scope.addRestaurant = function(restaurant) {
+
+            RestaurantService
+                .addRestaurant(userId, restaurant)
+                .then(function (response){
+                    //$location.path();
+                });
         }
-    };
+    }
 
 })();

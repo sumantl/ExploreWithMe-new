@@ -8,21 +8,25 @@
         $scope.selIndex = null;
         $scope.scopeRestaurantList = [];
         var currentUser = $rootScope.user;
-        var currentUserRestaurants = $scope.scopeRestaurantList;
+
 
 
         function initialiseRestaurant() {
-            getUserRestaurants(currentUser._id);
+            getUserRestaurants();
         }
 
         initialiseRestaurant();
 
 
-        function getUserRestaurants(userId) {
+        function getUserRestaurants() {
 
-            RestaurantService.findAllRestaurantForAdmin(userId, function (response) {
-                angular.copy(response, currentUserRestaurants);
-            });
+            RestaurantService
+                .findAllRestaurant()
+                .then(function (response){
+                    $scope.scopeRestaurantList =response.data;
+
+                })
+
         }
 
         $scope.addRestaurant = function (restaurant) {
@@ -46,13 +50,14 @@
         };
 
 
-        $scope.deleteRestaurant = function (index) {
+        $scope.deleteRestaurant = function (restaurant) {
 
-
-            RestaurantService.deleteRestaurantById(currentUserRestaurants[index]._id, function (response) {
-                getUserRestaurants(currentUser._id);
-            });
-            $scope.restaurant={};
+            console.log("del rest");
+            RestaurantService
+                .deleteRestaurantById(restaurant._id)
+                .then(function(response){
+                    getUserRestaurants();
+                });
         };
 
 

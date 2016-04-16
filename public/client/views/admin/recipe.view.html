@@ -3,7 +3,7 @@
 
 <ul class="nav nav-tabs">
 
-    <li><a href="/admin">Users</a></li>
+    <li><a href="#/admin">Users</a></li>
     <li><a href="#/comments">Comment</a></li>
     <li><a href="#/itinerary">Itinerary</a></li>
     <li><a href="#/destination">Destinaion</a></li>
@@ -45,7 +45,7 @@
                 {{recipe.name}}
             </td>
             <td>
-                <a ng-click="deleteRecipe($index)" class="glyphicon glyphicon-remove"></a>
+                <a ng-click="deleteRecipe(recipe)" class="glyphicon glyphicon-remove"></a>
                 <a  ng-click="selectRecipe($index)" class="glyphicon glyphicon-pencil"></a>
             </td>
 
