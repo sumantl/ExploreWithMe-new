@@ -11,7 +11,7 @@
 
         CommentService.findCommentByEntity(entity)
             .then(function(commentList) {
-                $scope.commentList = commentList;
+                $scope.commentList = commentList.data;
             });
 
 

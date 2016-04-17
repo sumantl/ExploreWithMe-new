@@ -5,7 +5,8 @@ module.exports = function (mongoose) {
             "username": String,
             "entityId": String,
             "description": String,
-            "flag": Boolean
+            "flag": Boolean,
+            "date" : { type: Date, default: Date.now }
         }, {collection: "comment"}
     );
 

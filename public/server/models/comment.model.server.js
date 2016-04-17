@@ -11,16 +11,27 @@ module.exports = function(db, mongoose) {
     var api = {
         findCommentByUserName: findCommentByUserName,
         getAllComments: getAllComments,
-        findCommentsByEntity :findCommentsByEntity,
+        getCommentByEntity  :getCommentByEntity,
         createComment: createComment,
-        deleteCommentById: deleteCommentById,
+        deleteCommentById: deleteCommentById
 
     };
     return api;
 
-    function findCommentsByEntity(){
+    function getCommentByEntity (entityId){
 
+        var deferred = q.defer();
+
+        Comment
+            .find(
+            {'entityId': entityId },
+            function(err, commentList){
+                deferred.resolve(commentList);
+            });
+        return deferred.promise;
     }
+
+
 
 
 

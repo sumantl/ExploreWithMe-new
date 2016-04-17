@@ -20,7 +20,7 @@
 
         function findCommentByEntity(entityId){
 
-            return $http.get("/api/comment/:"+entityId);
+            return $http.get("/api/comment/"+entityId);
         }
 
         function findAllComments(){
