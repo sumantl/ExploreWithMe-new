@@ -37,7 +37,6 @@
                     templateUrl: "views/search/search.view.html",
                     controller: "PlaceController"
                 })
-
                 .when("/search-recipe", {
                     templateUrl: "views/search/recipe-search.view.html",
                     controller: "RecipeSearchController"

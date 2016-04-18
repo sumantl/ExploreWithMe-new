@@ -40,6 +40,7 @@ module.exports = function(db, mongoose) {
     function findAllDestination() {
         var deferred = q.defer();
 
+        console.log("In destination.model.server.js");
         Destination.find(
             function(err, destinationList){
                 deferred.resolve(destinationList);

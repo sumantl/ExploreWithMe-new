@@ -3,14 +3,27 @@ module.exports = function(app, destinationModel){
     app.post('/api/destination', createDestination);
     app.get('/api/destination/:userId', findDestinationForUser);
     app.delete('/api/destination/:destinationId', deleteDestinationById);
-    app.get('/api/destination', findAllDestination);
+    app.get('/api/destination', findDestination);
+
+    function findDestination(req, res){
+        if(req.query.destinationName){
+            console.log("searching destination by name");
+            console.log(req.query.destinationName);
+            findDestinationByName(req.query.destinationName, res)
+
+        }
+        else
+            findAllDestination(req, res);
+    }
 
     function findAllDestination(req, res){
         destinationModel
             .findAllDestination()
             .then(function (destinationList){
+                console.log(destinationList);
                 res.json(destinationList);
             });
+      //  console.log(destinationList);
     }
 
 

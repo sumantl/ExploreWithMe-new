@@ -12,11 +12,22 @@
 
 
         function initialiseDestination() {
-            getUserDestination(currentUser._id);
+            //getUserDestination(currentUser._id);
+
+            getAllDestination();
         }
 
         initialiseDestination();
 
+        function getAllDestination() {
+
+            DestinationService
+                .findAllDestination()
+                .then(function(response){
+                    $scope.scopeDestinationList = response.data;
+
+                });
+        }
 
         function getUserDestination(userId) {
 

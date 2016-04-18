@@ -15,6 +15,7 @@
         var api = {
             createDestinationForUser: createDestinationForUser,
             findAllDestinationForUser: findAllDestinationForUser,
+            findAllDestination: findAllDestination,
             deleteDestinationById: deleteDestinationById,
             updateDestinationById: updateDestinationById,
         };
@@ -37,6 +38,12 @@
                 }
             }
             callback(userDestinationsList);
+        }
+
+        function findAllDestination()
+        {
+            console.log("In destination.client.services.js");
+            return $http.get("/api/destination");
         }
 
         function deleteDestinationById(destinationId, callback) {
