@@ -5,8 +5,8 @@
 
     function FoodDetailController($scope, $rootScope, $location, $routeParams, YelpService) {
 
-        $scope.foodId = $routeParams.foodId;
-        YelpService.searchBusiness($scope.foodId).
+        $scope.entityId = $routeParams.foodId;
+        YelpService.searchBusiness($scope.entityId).
             then(function (response) {
             console.log(response.data);
             $scope.hotelDetails = response.data;

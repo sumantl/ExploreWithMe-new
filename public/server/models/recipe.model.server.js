@@ -25,7 +25,7 @@ module.exports = function(db, mongoose) {
 
         var deferred = q.defer();
 
-        Recipe.find(
+        Recipe.findOne(
             {'_id': recipeId},
             function(err, recipe){
                 deferred.resolve(recipe);

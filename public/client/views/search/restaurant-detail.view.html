@@ -1,27 +1,27 @@
 <div class="container-fluid">
-    <h2>{{recipeDetail.name}}</h2>
+    <h2>{{restaurantDetail.name}}</h2>
 
     <div class="row">
 
         <div class="col-md-3">
-            <img ng-src="{{recipeDetail.image_url}}" height="200px" width="200px" class="pull-left"/>
+            <img ng-src="{{restaurantDetail.image_url}}" height="200px" width="200px" class="pull-left"/>
         </div>
         <div class="table-responsive">
             <table class="table table-striped">
                 <tbody>
                 <tr>
-                    <td>User Id:</td>
-                    <td>{{recipeDetail.userId}}</td>
+                    <td>Restaurant Address</td>
+                    <td>{{restaurantDetail.address}}</td>
 
                 </tr>
                 <tr>
-                    <td>Description</td>
-                    <td>{{recipeDetail.description}}</td>
+                    <td>Phone</td>
+                    <td>{{restaurantDetail.phone}}</td>
 
                 </tr>
                 <tr>
-                    <td>Ingredients</td>
-                    <td>{{recipeDetail.ingredients}}</td>
+                    <td>URL</td>
+                    <td><a href="{{restaurantDetail.url}}">{{restaurantDetail.url}}</a></td>
                 </tr>
 
                 </tbody>
@@ -33,3 +33,5 @@
     <div ng-include="'./views/comment/comment.view.html'"></div>
 </div>
 </div>
+
+

@@ -20,7 +20,7 @@
 
 
         function findRecipeById(recipeId){
-            return $http.get('api/recipe/id/'+recipeId);
+            return $http.get('/api/recipe/id/'+recipeId);
         }
 
         function findRecipeByName(recipeName){

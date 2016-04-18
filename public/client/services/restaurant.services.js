@@ -5,20 +5,26 @@
 
     function RestaurantService ($http) {
 
-        var restaurantsList=[];
-        restaurantsList=[
-            {"_id": "000", "name": "Border Cafe", "userId": 123},
-            {"_id": "001", "name": "Cheese Cake Factory", "userId": 123},
-            {"_id": "020", "title": "Pho Basil", "userId": 234},
-        ];
 
         var api = {
             addRestaurant: addRestaurant,
             findAllRestaurant: findAllRestaurant,
+            findRestaurantByName : findRestaurantByName,
+            findRestaurantById : findRestaurantById,
             deleteRestaurantById: deleteRestaurantById,
             updateRestaurantById: updateRestaurantById,
         };
         return api;
+
+
+        function findRestaurantById(restaurantId){
+            return $http.get('/api/restaurant/id/'+restaurantId);
+
+        }
+
+        function findRestaurantByName(restaurantName){
+            return $http.get('/api/restaurant?restaurantName='+restaurantName);
+        }
 
         function addRestaurant(userId, restaurant) {
             restaurant.userId = userId;

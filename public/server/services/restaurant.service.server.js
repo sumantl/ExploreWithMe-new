@@ -3,7 +3,41 @@ module.exports = function(app, restaurantModel){
     app.post('/api/restaurant', createRestaurant);
     //app.get('/api/recipe/:userId', findRecipeForUser);
     app.delete('/api/restaurant/:restaurantId', deleteRestaurantById);
-    app.get('/api/restaurant', findAllRestaurant);
+    app.get('/api/restaurant', findRestaurant);
+    app.get('/api/restaurant/id/:restaurantId', findRestaurantById);
+
+
+
+    function findRestaurantById(req, res){
+        var restaurantId = req.params.restaurantId;
+
+        restaurantModel
+            .findRestaurantById(restaurantId)
+            .then(function(restaurant){
+                res.json(restaurant);
+            });
+    }
+
+    function findRestaurant(req, res){
+        if(req.query.restaurantName){
+            console.log("searching restaurant by name");
+            console.log(req.query.restaurantName);
+            findRestaurantByName(req.query.restaurantName, res)
+
+        }
+        else
+            res.json(findAllRestaurant(req, res));
+    }
+
+    function findRestaurantByName(restaurantName, res){
+        restaurantModel
+            .findRestaurantByName(restaurantName)
+            .then(function (restaurantList){
+                res.json(restaurantList);
+            });
+    }
+
+
 
     function findAllRestaurant(req, res){
         restaurantModel

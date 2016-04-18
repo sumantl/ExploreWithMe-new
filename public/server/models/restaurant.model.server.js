@@ -11,6 +11,8 @@ module.exports = function(db, mongoose) {
     var api = {
         findRecipeForUser: findRecipeForUser,
         findAllRestaurant: findAllRestaurant,
+        findRestaurantById : findRestaurantById,
+        findRestaurantByName : findRestaurantByName,
         findCommentsByEntity :findCommentsByEntity,
         createRestaurant: createRestaurant,
         deleteRestaurantById: deleteRestaurantById
@@ -18,6 +20,33 @@ module.exports = function(db, mongoose) {
     };
     return api;
 
+
+
+    function findRestaurantById(restaurantId){
+
+        var deferred = q.defer();
+
+        Restaurant.findOne(
+            {'_id': restaurantId},
+            function(err, restaurant){
+                deferred.resolve(restaurant);
+            });
+        return deferred.promise;
+
+    }
+
+    function findRestaurantByName(restaurantname){
+        var deferred = q.defer();
+
+        Restaurant.find(
+            {'name': new RegExp(restaurantname,'i')},
+            function(err, restaurantList){
+
+                deferred.resolve(restaurantList);
+            });
+        return deferred.promise;
+
+    }
     function findCommentsByEntity(){
 
     }

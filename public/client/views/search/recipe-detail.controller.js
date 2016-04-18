@@ -5,12 +5,19 @@
 
     function RecipeDetailController($scope, $rootScope, $location, $routeParams, RecipeService) {
 
-        $scope.recipeId = $routeParams.recipeId;
-        RecipeService.searchBusiness($scope.foodId).
-        then(function (response) {
-            console.log(response.data);
-            $scope.hotelDetails = response.data;
-        });
+        $scope.entityId = $routeParams.recipeId;
+
+
+
+
+        RecipeService
+            .findRecipeById($scope.entityId)
+            .then(function (recipe) {
+                console.log(recipe.data);
+                $scope.recipeDetail = recipe.data;
+
+
+            })
     }
 
 })();

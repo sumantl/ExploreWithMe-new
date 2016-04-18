@@ -6,7 +6,7 @@
     function CommentController($scope, $rootScope, $location, $routeParams, CommentService) {
 
         $scope.commentList = [];
-        var entity = $scope.foodId;
+        var entity = $scope.entityId;
         var user = $rootScope.user;
 
         CommentService.findCommentByEntity(entity)

@@ -47,6 +47,17 @@
                     controller: "RecipeDetailController"
                 })
 
+                .when("/search-restaurant", {
+                    templateUrl: "views/search/restaurant-search.view.html",
+                    controller: "RestaurantSearchController"
+                })
+                .when("/restaurant-detail/:restaurantId", {
+                    templateUrl: "views/search/restaurant-detail.view.html",
+                    controller: "RestaurantDetailController"
+                })
+
+
+
                 .when("/userdetils", {
                     templateUrl: "views/admin/user-detail.view.html",
                     controller: "UserDetailController"
