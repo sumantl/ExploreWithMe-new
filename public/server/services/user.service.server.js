@@ -3,9 +3,6 @@ module.exports = function(app, userModel){
     app.get('/api/user',getUsers);
     app.get('/api/user/:id',findUserById);
     app.post('/api/user', createUser);
-
-    app.get('/api/user?username=username',getUsers);
-    app.get( '/api/user?username=alice&password=wonderland',getUsers);
     app.put('/api/user/:id',updateUser);
     app.delete('/api/user/:id',deleteUserById);
 
@@ -19,7 +16,7 @@ module.exports = function(app, userModel){
                     });
             }
             else
-                res.json(findUserByUserName(req.query.username));
+                findUserByUserName(req.query.username, res)
         }
         else{
             userModel.findAllUsers()
@@ -39,8 +36,12 @@ module.exports = function(app, userModel){
 
     }
 
-    function findUserByUserName(username){
-        return (userAccess.findUserByUserName(username));
+    function findUserByUserName(username, res){
+        userModel
+            .findUserByUserName(username)
+            .then(function (response){
+                res.json(response);
+            });
 
     }
 

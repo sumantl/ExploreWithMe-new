@@ -26,7 +26,7 @@ module.exports = function(app, restaurantModel){
 
         }
         else
-            res.json(findAllRestaurant(req, res));
+            findAllRestaurant(req, res);
     }
 
     function findRestaurantByName(restaurantName, res){

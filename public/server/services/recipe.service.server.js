@@ -27,7 +27,7 @@ module.exports = function(app, recipeModel){
 
         }
         else
-            res.json(findAllRecipe(req, res));
+            findAllRecipe(req, res);
     }
 
     function findRecipeByName(recipeName, res){
@@ -38,11 +38,11 @@ module.exports = function(app, recipeModel){
             });
     }
 
-    function findAllRecipe(){
+    function findAllRecipe(req, res){
         recipeModel
             .findAllRecipe()
             .then(function (recipeList){
-                return recipeList;
+                res.json(recipeList);
             });
     }
 
