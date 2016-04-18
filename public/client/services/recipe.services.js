@@ -5,21 +5,29 @@
 
     function RecipeService ($http) {
 
-        var recipesList=[];
-        recipesList=[
-            {"_id": "000", "name": "Daal Chawal", "userId": 123},
-            {"_id": "001", "name": "Poha", "userId": 123},
-            {"_id": "020", "title": "Samsosa", "userId": 234},
-        ];
+
 
         var api = {
             createRecipeForUser: createRecipeForUser,
             findAllRecipeForUser: findAllRecipeForUser,
+            findRecipeByName : findRecipeByName,
+            findRecipeById : findRecipeById,
             findAllRecipe : findAllRecipe,
             deleteRecipeById: deleteRecipeById,
             updateRecipeById: updateRecipeById,
         };
         return api;
+
+
+        function findRecipeById(recipeId){
+            return $http.get('api/recipe/id/'+recipeId);
+        }
+
+        function findRecipeByName(recipeName){
+
+            return $http.get('/api/recipe?recipeName='+recipeName);
+
+        }
 
         function createRecipeForUser(userId, recipe) {
             recipe.userId = userId;

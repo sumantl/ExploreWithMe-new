@@ -5,10 +5,12 @@
 
     function FoodSearchController($http, $scope, $rootScope, $location, $routeParams, YelpService) {
 
-        $scope.location="02120";
+
         $scope.search = search;
 
         function initialise(){
+            YelpService.init();
+
             if(navigator.geolocation) {
 
                 navigator.geolocation.getCurrentPosition(function(position) {
@@ -19,11 +21,12 @@
                 });
             }
 
-            YelpService.init();
+
     }
 
         initialise();
         function search(query, loc) {
+            loc = $scope.location;
 
         YelpService.searchYelp(query, loc)
                 .then(function(response){

@@ -38,6 +38,8 @@ module.exports = function(app, Promise){
         var term = req.query.search;
         var location = req.query.location;
 
+        console.log(location);
+
         yelp.search({term: term, location: location})
             .then(function (data) {
                 res.json(data);
