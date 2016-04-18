@@ -3,11 +3,22 @@
         .module('ExploreWithMeApp')
         .controller('AddDestinationController',AddDestinationController);
 
-    function AddDestinationController($scope, $rootScope, $location, UserService) {
+    function AddDestinationController($scope, $rootScope, $location, DestinationService) {
 
-        $scope.addDestination=function(user) {
 
+        console.log("In add-destination-controller");
+        var userId = $rootScope.user_id;
+        console.log("In add-destination-controller");
+
+        $scope.addDestination = function(destination) {
+
+            DestinationService
+                .createDestinationForUser(userId, destination)
+                .then(function (response){
+
+                    console.log("In add-destination-controller");
+                });
         }
-    };
+    }
 
 })();

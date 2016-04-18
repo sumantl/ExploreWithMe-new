@@ -21,12 +21,11 @@
         return api;
 
         function createItineraryForUser(userId, itinerary, callback) {
-            var tempItinerary ={};
-            angular.copy(itinerary,tempItinerary);
-            tempItinerary._id=(new Date).getTime();
-            tempItinerary.userId = userId;
-            itinerarysList.push(tempItinerary);
-            callback(tempItinerary);
+        console.log("In Intinerary.services.js");
+
+            itinerary.userId = userId;
+            return $http.post('/api/itinerary', itinerary);
+
         }
 
         function findAllItineraryForUser(userId, callback) {

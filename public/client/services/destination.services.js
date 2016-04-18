@@ -21,12 +21,12 @@
         return api;
 
         function createDestinationForUser(userId, destination, callback) {
-            var tempDestination ={};
-            angular.copy(destination,tempDestination);
-            tempDestination._id=(new Date).getTime();
-            tempDestination.userId = userId;
-            destinationsList.push(tempDestination);
-            callback(tempDestination);
+
+            console.log("In Destination Service");
+
+            destination.userId = userId;
+            return $http.post('/api/destination',destination);
+
         }
 
         function findAllDestinationForUser(userId, callback) {
