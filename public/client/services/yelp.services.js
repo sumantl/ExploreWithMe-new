@@ -15,7 +15,7 @@
 
         function init(){
             var input = document.getElementById('inputLocation');
-            var searchBox = new google.maps.places.SearchBox(input);
+            var searchBox = new google.maps.places.Autocomplete(input);
         }
 
 

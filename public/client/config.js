@@ -37,6 +37,16 @@
                     templateUrl: "views/search/search.view.html",
                     controller: "PlaceController"
                 })
+
+                .when("/search-recipe", {
+                    templateUrl: "views/search/recipe-search.view.html",
+                    controller: "RecipeSearchController"
+                })
+                .when("/recipe-detail/:recipeId", {
+                    templateUrl: "views/search/recipe-detail.view.html",
+                    controller: "RecipeDetailController"
+                })
+
                 .when("/userdetils", {
                     templateUrl: "views/admin/user-detail.view.html",
                     controller: "UserDetailController"

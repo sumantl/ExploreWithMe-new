@@ -30,6 +30,7 @@
                 .then(function(response){
                     $scope.commentList.push(response.data);
                     console.log($scope.commentList);
+                    $scope.comment ={};
                 });
         }
 

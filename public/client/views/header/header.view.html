@@ -31,13 +31,32 @@
                     </ul>
                 </li>
 
+                <li ng-show="user" ng-class="{'active' : $location.url().indexOf('home') > 0}">
+                    <a href="{$location.path()}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search <span class="caret"></span></a href="#">
+                    <ul class="dropdown-menu">
+                        <li><a href="#/search-recipe">Search Recipe</a></li>
+                        <li><a href="#/search-restaurant">Search Restaurant</a></li>
+                        <li><a href="#/search-destination">Search Destination</a></li>
+                        <li><a href="#/search-itinerary">Search Itinerary</a></li>
+                        <li><a href="#/search-user">Search User</a></li>
+                    </ul>
+                </li>
+
 
                 <li ng-class="{'active' : $location.url().indexOf('login') > 0}">
                     <a ng-show="!user" href="#/login">Login</a>
                 </li>
-                <li ng-class="{'active' : $location.url().indexOf('profile') > 0}">
-                    <a ng-show="user" href="#/profile">{{user.username}}</a>
+
+                <li ng-show="user" ng-class="{'active' : $location.url().indexOf('profile') > 0}">
+                    <a href="#/profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.username}}<span class="caret"></span></a href="#">
+                    <ul class="dropdown-menu">
+                        <li><a href="#/friend">Friends</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Saved Items</a></li>
+                        <li><a href="#/myitems">My items</a></li>
+                    </ul>
                 </li>
+
                 <li ng-class="{'active' : $location.url().indexOf('admin') > 0}">
                     <a ng-show="user" href="#/admin">Admin</a><!-- && user.roles.indexOf('admin')>=0-->
                 </li>

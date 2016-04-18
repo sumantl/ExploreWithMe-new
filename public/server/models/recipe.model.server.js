@@ -11,6 +11,8 @@ module.exports = function(db, mongoose) {
     var api = {
         findRecipeForUser: findRecipeForUser,
         findAllRecipe: findAllRecipe,
+        findRecipeByName : findRecipeByName,
+        findRecipeById: findRecipeById,
         findCommentsByEntity :findCommentsByEntity,
         createRecipe: createRecipe,
         deleteRecipeById: deleteRecipeById
@@ -18,8 +20,38 @@ module.exports = function(db, mongoose) {
     };
     return api;
 
+
+    function findRecipeById(recipeId){
+
+        var deferred = q.defer();
+
+        Recipe.find(
+            {'_id': recipeId},
+            function(err, recipe){
+                deferred.resolve(recipe);
+            });
+        return deferred.promise;
+
+
+    }
+
     function findCommentsByEntity(){
 
+    }
+
+    function findRecipeByName(recipeName){
+
+        var deferred = q.defer();
+
+        console.log('/'+recipeName+'/i');
+
+        Recipe.find(
+            {'name': new RegExp(recipeName,'i')},
+            function(err, recipeList){
+                console.log(recipeList);
+                deferred.resolve(recipeList);
+            });
+        return deferred.promise;
     }
 
 
@@ -30,8 +62,8 @@ module.exports = function(db, mongoose) {
 
         Recipe.find(
             {'userId': userId},
-            function(err, commentList){
-                deferred.resolve(commentList);
+            function(err, recipeList){
+                deferred.resolve(recipeList);
             });
         return deferred.promise;
     }
