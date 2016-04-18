@@ -7,17 +7,12 @@
 
         $scope.entityId = $routeParams.recipeId;
 
-
-
-
         RecipeService
             .findRecipeById($scope.entityId)
             .then(function (recipe) {
                 console.log(recipe.data);
                 $scope.recipeDetail = recipe.data;
-
-
-            })
+            });
     }
 
 })();

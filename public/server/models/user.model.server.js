@@ -49,8 +49,8 @@ module.exports = function(db, mongoose) {
 
         var deferred = q.defer();
 
-        User.findOne(
-            {'username': username},
+        User.find(
+            {'username': new RegExp(userName,'i')},
             function(err, user){
                 deferred.resolve(user);
             });

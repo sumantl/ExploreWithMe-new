@@ -50,6 +50,11 @@
                     templateUrl: "views/search/restaurant-search.view.html",
                     controller: "RestaurantSearchController"
                 })
+
+                .when("/search-user", {
+                    templateUrl: "views/search/user-search.view.html",
+                    controller: "UserSearchController"
+                })
                 .when("/restaurant-detail/:restaurantId", {
                     templateUrl: "views/search/restaurant-detail.view.html",
                     controller: "RestaurantDetailController"
@@ -58,7 +63,7 @@
 
 
                 .when("/userdetils", {
-                    templateUrl: "views/admin/user-detail.view.html",
+                    templateUrl: "views/admin/user-search.view.html",
                     controller: "UserDetailController"
                 })
                 .when("/restaurants", {
