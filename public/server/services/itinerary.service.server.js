@@ -3,10 +3,21 @@ module.exports = function(app, itineraryModel){
     app.post('/api/itinerary', createItinerary);
     app.get('/api/itinerary/:userId', findItineraryForUser);
     app.delete('/api/itinerary/:itineraryId', deleteItineraryById);
-    app.get('/api/itinerary', findAllItinerary);
+    app.get('/api/itinerary', findItinerary);
+
+    function findItinerary(req, res){
+        if(req.query.itineraryName){
+            console.log("searching itinerary by name");
+            console.log(req.query.itineraryName);
+            findItineraryByName(req.query.itineraryName, res)
+
+        }
+        else
+            findAllItinerary(req, res);
+    }
 
     function findAllItinerary(req, res){
-        destinationModel
+        itineraryModel
             .findAllItinerary()
             .then(function (itineraryList){
                 res.json(itineraryList);

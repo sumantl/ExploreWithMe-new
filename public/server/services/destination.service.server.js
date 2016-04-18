@@ -33,7 +33,6 @@ module.exports = function(app, destinationModel){
             .then(function (destination){
                 findAllDestination(req,res);
             });
-
     }
 
     function createDestination(req, res) {

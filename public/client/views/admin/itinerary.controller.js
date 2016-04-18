@@ -12,17 +12,20 @@
 
 
         function initialiseItinerary() {
-            getUserItinerary(currentUser._id);
+            getAllItinerary();
         }
 
         initialiseItinerary();
 
 
-        function getUserItinerary(userId) {
+        function getAllItinerary() {
 
-            ItineraryService.findAllItineraryForUser(userId, function (response) {
-                angular.copy(response, currentUserItinerarys);
-            });
+            ItineraryService
+                .findAllItinerary()
+                .then(function(response){
+                    $scope.scopeItineraryList = response.data;
+
+                });
         }
 
         $scope.addItinerary = function (itinerary) {

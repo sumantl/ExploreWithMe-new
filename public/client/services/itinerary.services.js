@@ -15,6 +15,7 @@
         var api = {
             createItineraryForUser: createItineraryForUser,
             findAllItineraryForUser: findAllItineraryForUser,
+            findAllItinerary: findAllItinerary,
             deleteItineraryById: deleteItineraryById,
             updateItineraryById: updateItineraryById,
         };
@@ -36,6 +37,11 @@
                 }
             }
             callback(userItinerarysList);
+        }
+
+        function findAllItinerary(){
+            console.log("In itinerary.ckient.service");
+            return $http.get("/api/itinerary");
         }
 
         function deleteItineraryById(itineraryId, callback) {
