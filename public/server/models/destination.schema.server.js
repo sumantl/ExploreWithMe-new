@@ -3,7 +3,7 @@ module.exports = function(mongoose){
     var destinationSchema = mongoose.Schema({
             "userId" : String,
             "name" : String,
-            "adress" : String,
+            "address" : String,
             "zipcode" : String,
             "description" : String,
             "ttd" : String,

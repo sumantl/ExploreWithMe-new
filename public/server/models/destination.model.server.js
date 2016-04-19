@@ -11,6 +11,8 @@ module.exports = function(db, mongoose) {
     var api = {
         findDestinationForUser: findDestinationForUser,
         findAllDestination: findAllDestination,
+        findDestinationByName: findDestinationByName,
+        findDestinationById: findDestinationById,
         findCommentsByEntity :findCommentsByEntity,
         createDestination: createDestination,
         deleteDestinationById: deleteDestinationById
@@ -22,6 +24,19 @@ module.exports = function(db, mongoose) {
 
     }
 
+    function findDestinationById(destinationId){
+
+        var deferred = q.defer();
+
+        Destination.findOne(
+            {'_id': destinationId},
+            function(err, destination){
+                deferred.resolve(destination);
+            });
+        return deferred.promise;
+
+
+    }
 
 
     function findDestinationForUser(userId) {
@@ -48,6 +63,22 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
+    function findDestinationByName(destinationName){
+
+        var deferred = q.defer();
+
+        console.log('/'+destinationName+'/i');
+
+        Destination.find(
+            {'name': new RegExp(destinationName,'i')},
+            function(err, destinationList){
+                console.log(destinationList);
+                deferred.resolve(destinationList);
+            });
+        return deferred.promise;
+    }
+
+
     function createDestination(destination) {
 
         var deferred = q.defer();
@@ -71,6 +102,7 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
 
     }
+
 
     function updateUser(userId, user) {
 

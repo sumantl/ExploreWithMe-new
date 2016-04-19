@@ -16,6 +16,8 @@
             createDestinationForUser: createDestinationForUser,
             findAllDestinationForUser: findAllDestinationForUser,
             findAllDestination: findAllDestination,
+            findDestinationByName: findDestinationByName,
+            findDestinationById: findDestinationById,
             deleteDestinationById: deleteDestinationById,
             updateDestinationById: updateDestinationById,
         };
@@ -46,16 +48,22 @@
             return $http.get("/api/destination");
         }
 
-        function deleteDestinationById(destinationId, callback) {
+        function findDestinationByName(destinationName){
+
+            return $http.get('/api/destination?destinationName='+destinationName);
+
+        }
+
+        function findDestinationById(destinationId){
+
+            return $http.get('/api/destination/id/'+destinationId);
+        }
 
 
-            for (var i = 0; i < destinationsList.length; i++) {
-                if (destinationsList[i]._id == destinationId) {
-                    destinationsList.splice(i, 1);
+        function deleteDestinationById(destinationId) {
+            console.log("in destination.client.service");
 
-                }
-            }
-            callback(destinationsList);
+            return $http.delete('/api/destination/'+destinationId);
         }
 
         function updateDestinationById (destinationId, newDestination, callback){

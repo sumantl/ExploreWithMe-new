@@ -11,6 +11,8 @@ module.exports = function(db, mongoose) {
     var api = {
         findItineraryForUser: findItineraryForUser,
         findAllItinerary: findAllItinerary,
+        findItineraryByName: findItineraryByName,
+        findItineraryById: findItineraryById,
         findCommentsByEntity :findCommentsByEntity,
         createItinerary: createItinerary,
         deleteItineraryById: deleteItineraryById
@@ -46,6 +48,37 @@ module.exports = function(db, mongoose) {
             });
         return deferred.promise;
     }
+
+    function findItineraryByName(itineraryName){
+
+        var deferred = q.defer();
+
+        console.log('/'+itineraryName+'/i');
+
+        Itinerary.find(
+            {'name': new RegExp(itineraryName,'i')},
+            function(err, itineraryList){
+                console.log(itineraryList);
+                deferred.resolve(itineraryList);
+            });
+        return deferred.promise;
+    }
+
+    function findItineraryById(itineraryId){
+
+        var deferred = q.defer();
+
+        Itinerary.findOne(
+            {'_id': itineraryId},
+            function(err, itinerary){
+                deferred.resolve(itinerary);
+            });
+        return deferred.promise;
+
+
+    }
+
+
 
     function createItinerary(itinerary) {
 

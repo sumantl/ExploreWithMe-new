@@ -4,6 +4,7 @@ module.exports = function(app, itineraryModel){
     app.get('/api/itinerary/:userId', findItineraryForUser);
     app.delete('/api/itinerary/:itineraryId', deleteItineraryById);
     app.get('/api/itinerary', findItinerary);
+    app.get('/api/itinerary/id/:itineraryId', findItineraryById);
 
     function findItinerary(req, res){
         if(req.query.itineraryName){
@@ -24,9 +25,29 @@ module.exports = function(app, itineraryModel){
             });
     }
 
+    function findItineraryByName(itineraryName, res){
+        itineraryModel
+
+            .findItineraryByName(itineraryName)
+            .then(function (itineraryList){
+                res.json(itineraryList);
+            });
+    }
+
+    function findItineraryById(req, res){
+        var itineraryId = req.params.itineraryId;
+
+        itineraryModel
+            .findItineraryById(itineraryId)
+            .then(function(itinerary){
+                res.json(itinerary);
+            });
+    }
+
+
 
     function deleteItineraryById(req, res){
-        destinationModel
+        itineraryModel
             .deleteItineraryById(req.params.itineraryId)
             .then(function (itinerary){
                 findAllItinerary(req,res);

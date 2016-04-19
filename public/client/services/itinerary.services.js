@@ -16,6 +16,8 @@
             createItineraryForUser: createItineraryForUser,
             findAllItineraryForUser: findAllItineraryForUser,
             findAllItinerary: findAllItinerary,
+            findItineraryByName: findItineraryByName,
+            findItineraryById: findItineraryById,
             deleteItineraryById: deleteItineraryById,
             updateItineraryById: updateItineraryById,
         };
@@ -44,16 +46,18 @@
             return $http.get("/api/itinerary");
         }
 
-        function deleteItineraryById(itineraryId, callback) {
+        function findItineraryByName(itineraryName){
+            return $http.get("/api/itinerary?itineraryName="+itineraryName);
+        }
+
+        function findItineraryById(itineraryId){
+
+            return $http.get('/api/itinerary/id/'+itineraryId);
+        }
 
 
-            for (var i = 0; i < itinerarysList.length; i++) {
-                if (itinerarysList[i]._id == itineraryId) {
-                    itinerarysList.splice(i, 1);
-
-                }
-            }
-            callback(itinerarysList);
+        function deleteItineraryById(itineraryId) {
+            return $http.delete('/api/itinerary/'+itineraryId);
         }
 
         function updateItineraryById (itineraryId, newItinerary, callback){
