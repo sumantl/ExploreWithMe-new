@@ -51,6 +51,26 @@
                     controller: "RestaurantSearchController"
                 })
 
+                .when("/search-destination", {
+                    templateUrl: "views/search/destination-search.view.html",
+                    controller: "DestinationSearchController"
+                })
+
+                .when("/destination-detail/:destinationId", {
+                    templateUrl: "views/search/destination-detail.view.html",
+                    controller: "DestinationDetailController"
+                })
+
+                .when("/search-itinerary", {
+                    templateUrl: "views/search/itinerary-search.view.html",
+                    controller: "ItinerarySearchController"
+                })
+
+                .when("/itinerary-detail/:itineraryId", {
+                    templateUrl: "views/search/itinerary-detail.view.html",
+                    controller: "ItineraryDetailController"
+                })
+
                 .when("/search-user", {
                     templateUrl: "views/search/user-search.view.html",
                     controller: "UserSearchController"

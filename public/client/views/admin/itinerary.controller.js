@@ -51,13 +51,14 @@
         };
 
 
-        $scope.deleteItinerary = function (index) {
+        $scope.deleteItinerary = function (itinerary) {
 
 
-            ItineraryService.deleteItineraryById(currentUserItinerarys[index]._id, function (response) {
-                getUserItinerary(currentUser._id);
+            ItineraryService
+                .deleteItineraryById(itinerary._id)
+                .then(function (response){
+                $scope.scopeItineraryList= response.data;
             });
-            $scope.itinerary={};
         };
 
 

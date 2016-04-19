@@ -59,13 +59,14 @@
         };
 
 
-        $scope.deleteDestination = function (index) {
+        $scope.deleteDestination = function (destination) {
 
 
-            DestinationService.deleteDestinationById(currentUserDestinations[index]._id, function (response) {
-                getUserDestination(currentUser._id);
-            });
-            $scope.destination={};
+            DestinationService
+                .deleteDestinationById(destination._id)
+                .then(function (response){
+                    $scope.scopeDestinationList= response.data;
+                });
         };
 
 

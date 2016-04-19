@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <h2>Search</h2>
+
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="inputQuery" class="col-sm-2 control-label">Destination Name</label>
+
+            <div class="col-sm-8">
+                <input ng-model="destination.name" type="text" class="form-control" id="inputQuery" placeholder="Boston">
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-sm-offset-2 col-sm-8">
+                <button ng-click="search(destination)"
+                        class="btn btn-primary btn-block">
+                    Search Destination
+                </button>
+            </div>
+        </div>
+    </form>
+
+
+    <h3>Search Results</h3>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Destination Name</th>
+                <th>Address</th>
+                <th>Description</th>
+                <th>Things To Do</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+
+            <tr ng-repeat="destination in searchDestinationList">
+
+                <td>
+                    <a href="#/destination-detail/{{destination._id}}">
+                        {{destination.name}}
+                    </a>
+
+                </td>
+                <td>
+                    {{destination.address}}
+                </td>
+                <td>
+                    {{destination.description}}
+                </td>
+
+                <td>
+                    {{destination.ttd}}
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

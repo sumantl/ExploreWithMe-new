@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <h2>{{itineraryDetail.name}}</h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <img ng-src="{{itineraryDetail.image_url}}" height="200px" width="200px" class="pull-left"/>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <td>Destination Name</td>
+                    <td>{{itineraryDetail.name}}</td>
+
+                </tr>
+                <tr>
+                    <td>Origin City</td>
+                    <td>{{itineraryDetail.origin}}</td>
+
+                </tr>
+                <tr>
+                    <td>Duration</td>
+                    <td>{{itineraryDetail.duration}}</td>
+                </tr>
+
+                <tr>
+                    <td>Cost</td>
+                    <td>{{itineraryDetail.cost}}</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>{{itineraryDetail.description}}</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <br><br>
+    <div ng-include="'./views/comment/comment.view.html'"></div>
+</div>
+</div>

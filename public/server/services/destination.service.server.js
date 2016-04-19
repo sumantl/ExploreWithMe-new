@@ -4,6 +4,7 @@ module.exports = function(app, destinationModel){
     app.get('/api/destination/:userId', findDestinationForUser);
     app.delete('/api/destination/:destinationId', deleteDestinationById);
     app.get('/api/destination', findDestination);
+    app.get('/api/destination/id/:destinationId', findDestinationById);
 
     function findDestination(req, res){
         if(req.query.destinationName){
@@ -16,6 +17,14 @@ module.exports = function(app, destinationModel){
             findAllDestination(req, res);
     }
 
+    function findDestinationByName(destinationName, res){
+        destinationModel
+            .findDestinationByName(destinationName)
+            .then(function (destinationList){
+                res.json(destinationList);
+            });
+    }
+
     function findAllDestination(req, res){
         destinationModel
             .findAllDestination()
@@ -26,8 +35,19 @@ module.exports = function(app, destinationModel){
       //  console.log(destinationList);
     }
 
+    function findDestinationById(req, res){
+        var destinationId = req.params.destinationId;
+
+        destinationModel
+            .findDestinationById(destinationId)
+            .then(function(destination){
+                res.json(destination);
+            });
+    }
+
 
     function deleteDestinationById(req, res){
+        console.log("in destination.server.service");
         destinationModel
             .deleteDestinationById(req.params.destinationId)
             .then(function (destination){
