@@ -8,7 +8,8 @@
         $scope.login=function(user){
 
             UserService
-                .findUserByCredentials(user.username, user.password)
+                //.findUserByCredentials(user.username, user.password)
+                .login(user)
                 .then(function(response){
                     console.log("res "+response.data.username);
                     var empty={};

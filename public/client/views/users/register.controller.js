@@ -7,7 +7,10 @@
 
         $scope.register=function(user){
 
-            UserService.createUser(user)
+            user.roles=[];
+            user.roles.push('admin');
+
+            UserService.register(user)
                 .then(function(response){
                     console.log(response.data);
                     $rootScope.user=response.data;

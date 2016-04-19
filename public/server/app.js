@@ -1,4 +1,4 @@
-module.exports = function (app, db ,mongoose){
+module.exports = function (app, db ,mongoose, passport, cookieParser, session){
 
 
 

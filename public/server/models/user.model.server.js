@@ -14,9 +14,12 @@ module.exports = function(db, mongoose) {
         createUser: createUser,
         deleteUserById: deleteUserById,
         updateUser: updateUser,
-        findUserByUserName: findUserByUserName
+        findUserByUserName: findUserByUserName,
+        findUserById : findUserById
     };
     return api;
+
+
 
 
 
@@ -33,10 +36,10 @@ module.exports = function(db, mongoose) {
     }
 
 
-    function  findUserById(userId){
+    function findUserById(userId){
         var deferred = q.defer();
 
-        User.findById(userId,
+        User.findOne({'_id': userId},
             function(err, user){
                 deferred.resolve(user);
             });
@@ -46,6 +49,19 @@ module.exports = function(db, mongoose) {
 
 
     function findUserByUserName(userName) {
+
+        var deferred = q.defer();
+
+        User.findOne(
+            {'username': userName},
+            function(err, user){
+                deferred.resolve(user);
+            });
+        return deferred.promise;
+    }
+
+
+    function searchUser(userName) {
 
         var deferred = q.defer();
 

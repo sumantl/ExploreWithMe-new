@@ -58,7 +58,7 @@
                 </li>
 
                 <li ng-class="{'active' : $location.url().indexOf('admin') > 0}">
-                    <a ng-show="user" href="#/admin">Admin</a><!-- && user.roles.indexOf('admin')>=0-->
+                    <a ng-show="user" href="#/admin">Admin && user.roles.indexOf('admin')>=0</a>
                 </li>
                 <li ng-class="{'active' : $location.url().indexOf('home') > 0}">
                     <a ng-click="logout(user)" ng-show="user" href="#/home.">Logout</a>
