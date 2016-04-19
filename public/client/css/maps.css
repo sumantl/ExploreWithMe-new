@@ -1,8 +1,22 @@
 
 #map {
 
-    height: 400px;
+    height: 80%;
 
+}
+
+
+#placescontainer{
+    height: 400px;
+    border : 1px;
+}
+
+.angular-google-map-container { height: 80px; }
+
+
+
+#foodmapcontainer1{
+    height: 80px;
 }
 .infoWindowContent {
     font-size:  14px !important;

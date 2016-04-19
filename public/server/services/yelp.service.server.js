@@ -20,6 +20,7 @@ module.exports = function(app, Promise){
         console.log(businessTerm);
         yelp.business(businessTerm)
             .then(function (data){
+                console.log(data);
                 res.json(data);
             })
             .catch(function (err) {
@@ -42,6 +43,7 @@ module.exports = function(app, Promise){
 
         yelp.search({term: term, location: location})
             .then(function (data) {
+
                 res.json(data);
             })
             .catch(function (err) {
