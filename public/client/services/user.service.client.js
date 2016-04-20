@@ -13,10 +13,15 @@
             updateUser: updateUser,
             findUserByUserName: findUserByUserName,
             login: login,
-            register : register
+            register : register,
+            searchUserByUserName: searchUserByUserName
 
         };
         return api;
+
+        function searchUserByUserName(username){
+            return $http.get('/api/user?flag=true&username='+username);
+        }
 
         function register(user){
             return $http.post('/api/register',user);
@@ -32,18 +37,18 @@
         }
 
         function findUserByCredentials(username, password) {
-            console.log("in user.sevice.client.js");
+
             return $http.get('/api/user?username='+username+'&password='+password);
 
         }
 
         function findAllUsers() {
-            console.log("in user.service.client.js");
+
             return $http.get('/api/user');
         }
 
         function createUser(newUser) {
-            console.log("In Create User");
+
             return $http.post('/api/user', newUser);
         }
 

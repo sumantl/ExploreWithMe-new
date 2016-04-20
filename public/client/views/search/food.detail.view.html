@@ -27,10 +27,7 @@
                         <td>Address</td>
                         <td>{{hotelDetails.location.display_address.toString()}}</td>
                     </tr>
-                    <tr>
-                        <td>View on Map</td>
-                        <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myMapModal">Open Modal</button></td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -38,45 +35,21 @@
         </div>
         <br><br>
 
-
+        <!--
 
         <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true">
             <ui-gmap-search-box template="searchbox.template" events="searchbox.events" position="BOTTOM_RIGHT"></ui-gmap-search-box>
             <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
         </ui-gmap-google-map>
 
-
+        -->
         <div ng-include="'./views/comment/comment.view.html'"></div>
     </div>
 
 
 
 
-    <div class="modal fade" id="myMapModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Modal title</h4>
 
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row">
-                            <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
 
 
     </div>

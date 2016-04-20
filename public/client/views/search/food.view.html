@@ -13,7 +13,8 @@
         <div class="form-group">
             <label for="inputLocation" class="col-sm-2 control-label">Near</label>
             <div class="col-sm-8">
-                <input ng-model="location" type="text" class="form-control" id="inputLocation" placeholder="Location">
+                <input type="text" class="form-control" id="inputLocation" placeholder="Location"  ng-autocomplete ng-model="location" options="options" details="details"/>
+
             </div>
         </div>
 

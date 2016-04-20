@@ -15,10 +15,10 @@ module.exports = function(db, mongoose) {
         deleteUserById: deleteUserById,
         updateUser: updateUser,
         findUserByUserName: findUserByUserName,
-        findUserById : findUserById
+        findUserById : findUserById,
+        searchUserByUserName: searchUserByUserName
     };
     return api;
-
 
 
 
@@ -61,7 +61,7 @@ module.exports = function(db, mongoose) {
     }
 
 
-    function searchUser(userName) {
+    function searchUserByUserName(userName) {
 
         var deferred = q.defer();
 

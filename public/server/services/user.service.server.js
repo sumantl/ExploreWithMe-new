@@ -25,8 +25,6 @@ module.exports = function(app, userModel){
     function register(req, res) {
 
         var tempUser = req.body;
-        //console.log(tempUser);
-
 
         userModel
             .findUserByUserName(tempUser.username)
@@ -80,10 +78,6 @@ module.exports = function(app, userModel){
             );
     }
 
-
-
-
-
     function localStrategy(username, password, done) {
         userModel
             .findUserByCredentials(username, password)
@@ -125,7 +119,7 @@ module.exports = function(app, userModel){
         } else {
             next();
         }
-    };
+    }
 
     function getUsers(req, res){
         if(req.query.username) {
@@ -136,8 +130,18 @@ module.exports = function(app, userModel){
                         res.json(user);
                     });
             }
-            else
-                findUserByUserName(req.query.username, res)
+            else {
+
+                if(req.query.flag) {
+                    userModel
+                        .searchUserByUserName(req.query.username)
+                        .then(function (userList) {
+                            res.json(userList)
+                        });
+                }
+                else
+                    findUserByUserName(req.query.username, res)
+            }
         }
         else{
             userModel.findAllUsers()

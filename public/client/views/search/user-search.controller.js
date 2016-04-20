@@ -14,7 +14,7 @@
         function searchUser(user) {
 
             UserService
-                .findUserByUserName(user.username)
+                .searchUserByUserName(user.username)
                 .then(function(response){
 
                     $scope.searchUserList = response.data;
