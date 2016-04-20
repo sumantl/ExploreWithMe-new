@@ -3,28 +3,20 @@
 
 
 
-    <!--
-    <form class="form-horizontal">
+
+    <form class="form-horizontal" ng-submit="search(query)">
         <div class="form-group">
             <label for="inputQuery" class="col-sm-2 control-label">What to eat</label>
 
             <div class="col-sm-8">
-                <input ng-model="query" type="text" class="form-control" id="inputQuery" placeholder="Search Me">
-            </div>
-        </div>
-        <div class="form-group ">
-            <div class="col-sm-offset-2 col-sm-8">
-                <button ng-click="search(query)"
-                        class="btn btn-primary btn-block">
-                    Search
-                </button>
+
+                <input type="text" class="form-control" id="inputQuery" placeholder="Search Me"  ng-autocomplete ng-model="query" options="options" details="details"/>{{query}}
             </div>
         </div>
     </form>
 
--->
 
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box" ng-submit="init()">
+
 
 
     <div class="row">
@@ -44,7 +36,7 @@
                         <tbody>
                         <tr ng-repeat="place in scopePlaceList">
                             <td>
-                                <a href="#/placedetail/{{place.id}}">
+                                <a href="#/placedetail/{{place.place_id}}">
                                     {{place.name}}
                                 </a>
                             </td>
@@ -68,4 +60,4 @@
 
 
     </div>
-    </div>
+</div>

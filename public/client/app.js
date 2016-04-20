@@ -1,5 +1,5 @@
 (function(){
     angular
-        .module("ExploreWithMeApp", ["ngRoute","uiGmapgoogle-maps"])
+        .module("ExploreWithMeApp", ["ngRoute","uiGmapgoogle-maps","ngAutocomplete"])
 
 })();

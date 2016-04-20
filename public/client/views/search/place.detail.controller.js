@@ -3,30 +3,19 @@
         .module("ExploreWithMeApp")
         .controller("PlaceDetailController", PlaceDetailController);
 
-    function PlaceDetailController($scope, $rootScope, $location, $routeParams, YelpService) {
+    function PlaceDetailController($scope, $rootScope, $location, $routeParams, GooglePlaces) {
 
+        $scope.entityId = $routeParams.placeId;
 
-        $scope.placeId = $routeParams.placeId;
+        GooglePlaces
+            .getDetail($scope.entityId)
+            .then(function (response){
+                console.log(response.data.result);
+                $scope.placeDetail = response.data.result;
 
-        YelpService.searchBusiness($scope.foodId, $rootScope.searchCount, function (response) {
-            console.log("1");
-            console.log(response);
-            $scope.hotelDetails = response;
-            $rootScope.searchCount++;
-        });
-
-
-
-        function getBusinessDetails(foodId) {
-            console.log("function called");
-
-
-            console.log($rootScope.hotelDetails);
-        }
-
-        //console.log("1");
-
-
+            });
     }
+
+
 
 })();

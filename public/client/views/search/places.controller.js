@@ -1,36 +1,25 @@
 (function(){
 
-angular.module('ExploreWithMeApp')
-    .controller('PlaceController', PlaceController);
+    angular.module('ExploreWithMeApp')
+        .controller('PlaceController', PlaceController);
 
     function PlaceController ($scope, $rootScope, $location, GooglePlaces) {
 
-/*
-        GooglePlaces.initAutocomplete(function(response){
-            $scope.scopePlaceList = response;
+        /*
+         GooglePlaces.initAutocomplete(function(response){
+         $scope.scopePlaceList = response;
 
-        });
+         });
 
 
-        */
-        GooglePlaces.initAutocomplete()
-            .then(function (response){
-                console.log(response);
-                $scope.scopePlaceList = response;
-
-            });
+         */
 
 
 
-        function init(){
 
-            GooglePlaces.initAutocomplete()
-                .then(function (response){
-                    console.log(response);
-                    $scope.scopePlaceList = response;
 
-                });
-        }
+        GooglePlaces.initAutocomplete([]);
+
 
 
         $scope.search = search;
@@ -42,6 +31,7 @@ angular.module('ExploreWithMeApp')
                 .then(function(response){
 
                     console.log(response.data.results);
+                    // GooglePlaces.initAutocomplete(response.data.results);
                     $scope.scopePlaceList = response.data.results;
                     console.log(response)
                 });

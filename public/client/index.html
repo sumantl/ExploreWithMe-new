@@ -29,6 +29,7 @@
     <script src="views/header/header.controller.js"></script>
     <script src="views/admin/admin.controller.js"></script>
     <script src="views/search/places.controller.js"></script>
+    <script src="views/search/place.detail.controller.js"></script>
     <script src="views/search/food.controller.js"></script>
 
     <script src="views/search/recipe-search.controller.js"></script>
@@ -55,6 +56,8 @@
     <script src="services/comments.services.js"></script>
     <script src="services/yelp.services.js"></script>
     <script src="services/comments.services.js"></script>
+
+    <script src="js/ngAutocomplete.js"></script>
 
     <script src="js/angular-google-maps.js"></script>
     <script src="js/angular-simple-logger.js"></script>
@@ -107,7 +110,7 @@
 <div ng-include="'views/header/header.view.html'"></div>
 <div class="container-fluid">
 
-            <div ng-view></div>
+    <div ng-view></div>
 
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtHU7cHdw6uzDLClJFkc33gLKkHE-Vdvw&libraries=places" async defer></script>

@@ -4,36 +4,39 @@ module.exports = function(app){
 
 
     app.get('/api/places/search', searchPlaces);
-   // app.get('/api/yelp/search/:business', searchBusiness);
+    app.get('/api/places/:placeId', getPlaceDetail);
+
+
+    function getPlaceDetail(req, res){
+
+        var placeId = req.params.placeId;
+        var url ='https://maps.googleapis.com/maps/api/place/details/json?placeid='+placeId+'&key=AIzaSyDqu1FqTmzBY0ogfnDSOkKK2Q9VmsnI7Eo=';
+        request(url, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+
+                res.send(body);
+            }
+        });
+
+
+    }
 
 
     function searchPlaces(req, res){
 
         var searchQuery = req.query.search;
+        console.log(searchQuery);
         var location;
         var url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+searchQuery+'&location='+location+'&key=AIzaSyDqu1FqTmzBY0ogfnDSOkKK2Q9VmsnI7Eo='
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 res.send(body);
             }
-        })
+        });
 
     };
 
-    function searchYelp(req, res) {
 
-        var term = req.query.search;
-        var location = req.query.location;
-
-        yelp.search({term: term, location: location})
-            .then(function (data) {
-                res.json(data);
-            })
-            .catch(function (err) {
-                console.error(err);
-            });
-
-    }
 };
 
 
