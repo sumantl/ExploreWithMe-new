@@ -66,7 +66,7 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
 
         User.find(
-            {'username': new RegExp(userName,'i')},
+            {'username': new RegExp(userName,'i')},'username',
             function(err, user){
                 deferred.resolve(user);
             });
@@ -97,7 +97,7 @@ module.exports = function(db, mongoose) {
     function deleteUserById(userId) {
         var deferred = q.defer();
 
-        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
         console.log(userId);
         User.remove({'_id':userId},
             function(err, message){
@@ -127,6 +127,7 @@ module.exports = function(db, mongoose) {
 
                     console.log("success");
                     console.log(update);
+                    deferred.resolve(update);
                 }
             }
         );
@@ -135,69 +136,3 @@ module.exports = function(db, mongoose) {
 
 };
 
-    /*
-
-    function  findUserByUserName(username){
-        for (index in users){
-            if (users[index].username == username){
-                return users[index];
-            }
-        }
-    }
-    function findUserByCredentials(username, password){
-
-        var user;
-        console.log("in user.model.js--------user: "+username+"password: "+password);
-        for(user in users){
-            if(users[user].username==username && users[user].password==password)
-                return users[user];
-        }
-        return null;
-    }
-
-    function findAllUsers(){
-        console.log("in user.model.server.js");
-        return users;
-    }
-
-    function createUser(newUser){
-        console.log("in user.model.js");
-        newUser._id = (new Date).getTime();
-        users.push(newUser);
-        return newUser;
-    }
-
-    function deleteUserById(userId){
-        var user;
-        console.log("in user.model.js");
-        for(user in users){
-            if(users[user]._id==userId){
-                users.splice(user,1);
-                break;
-            }
-        }
-        return users;
-    }
-
-    function updateUserById(userId, preUser){
-        var user;
-        console.log("in user.model.js");
-        for(user in users){
-            if(users[user]._id==userId){
-                users[user].firstName = preUser.firstName;
-                users[user].lastName = preUser.lastName;
-                users[user].username = preUser.username;
-                users[user].password = preUser.password;
-                users[user].roles = preUser.roles;
-                users[user].friends = preUser.friends;
-                users[user].email = preUser.email;
-                return preUser;
-            }
-        }
-        return null;
-
-
-    }
-};
-
-        */

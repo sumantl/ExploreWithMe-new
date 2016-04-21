@@ -15,7 +15,8 @@
             RestaurantService
                 .addRestaurant(userId, restaurant)
                 .then(function (response){
-                    //$location.path();
+                    $scope.restaurant={};
+                    $scope.success=true;
                 });
         }
     }

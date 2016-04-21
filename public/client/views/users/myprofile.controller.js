@@ -12,7 +12,7 @@
                 .then(function(response){
                     console.log(response.data);
 
-                    $rootScope.user=response.data;
+                   // $rootScope.user=response.data;
                     console.log("Profile");
                     $location.path('/profile');
                 }

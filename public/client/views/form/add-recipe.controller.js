@@ -15,7 +15,8 @@
             RecipeService
                 .createRecipeForUser(userId, recipe)
                 .then(function (response){
-                    //$location.path();
+                    $scope.recipe={};
+                    $scope.success=true;
                 });
 
 

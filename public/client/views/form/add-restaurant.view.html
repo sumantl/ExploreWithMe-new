@@ -34,5 +34,11 @@
                 <button ng-click="addRestaurant(restaurant)"  class="btn btn-primary btn-block">Submit Restaurant</button>
             </div>
         </div>
+        <div ng-show="success" class="alert alert-success col-sm-offset-2 col-sm-10 alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Successful Submission</strong>
+        </div>
     </form>
 </div>

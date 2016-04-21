@@ -13,7 +13,8 @@
                 .createItineraryForUser(userId, itinerary)
                 .then(function (response) {
 
-                    console.log("In add-Itinerary-controller");
+                    $scope.itinerary={};
+                    $scope.success=true;
                 });
         }
     }

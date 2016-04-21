@@ -16,7 +16,8 @@
                 .createDestinationForUser(userId, destination)
                 .then(function (response){
 
-                    console.log("In add-destination-controller");
+                    $scope.destination={};
+                    $scope.success=true;
                 });
         }
     }

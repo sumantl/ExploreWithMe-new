@@ -131,7 +131,7 @@ module.exports = function(app, userModel){
                     });
             }
             else {
-
+                console.log("friends");
                 if(req.query.flag) {
                     userModel
                         .searchUserByUserName(req.query.username)
