@@ -5,10 +5,10 @@
 
     <li><a href="#/admin">Users</a></li>
     <li><a href="#/comments">Comment</a></li>
-    <li class="active"><a href="#/destination">Destinaion</a></li>
     <li><a href="#/itinerary">Itinerary</a></li>
+    <li class="active"><a href="#/destination">Destination</a></li>
     <li><a href="#/recipe">Recipe</a></li>
-    <li ><a href="#/restaurants">Restaurants</a></li>
+    <li><a href="#/restaurants">Restaurants</a></li>
 
 </ul>
 <div class="table-responsive">
@@ -22,19 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>
-                <input ng-model="destination._id" type="text" class="form-control" id="inputRecipeId" placeholder="name">
-            </td>
-            <td>
-                <input ng-model="destination.name" type="text" class="form-control" id="inputRecipeName" placeholder="name">
-            </td>
 
-            <td>
-                <a ng-click="addDestination(destination)" class="glyphicon glyphicon-plus"></a>
-                <a ng-click="updateDestination(destination)" class="glyphicon glyphicon-ok"></a>
-            </td>
-        </tr>
 
         <tr ng-repeat="destination in scopeDestinationList"
             ng-class="{'success' : $index == selectedFormIndex}">

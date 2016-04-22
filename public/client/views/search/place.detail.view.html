@@ -1,41 +1,51 @@
-<h2>{{placeDetail.name}}</h2>
-
-<div class="col-md-4">
-    <img ng-src="{{placeDetail.photos[0].html_attributes[0]}}" height="300px" width="200px" class="pull-left"/>
-</div>
-
-<div class="col-md-8">
-    <div class="table-responsive">
-        <table class="table table-striped">
-
-            <tbody>
-
-            <tr>
-                <td>Phone Number:</td>
-                <td>{{placeDetail.formatted_phone_number}}</td>
-
-            </tr>
-            <tr>
-                <td>Rating</td>
-                <td>{{placeDetail.rating}}/5</td>
-
-            </tr>
-            <tr>
-                <td>Open</td>
-                <td>{{placeDetail.opening_hours.open_now}}</td>
-
-            </tr>
-
-            <tr>
-                <td>Address</td>
-                <td>{{placeDetail.formatted_address}}</td>
-
-            </tr>
+<div class="container-fluid">
+    <h2>{{placeDetail.name}}</h2>
 
 
-            </tbody>
-        </table>
+    <div class="row">
+        <div class="col-md-4">
+            <img ng-src="{{placeDetail.photos[0].html_attributes[0]}}" height="300px" width="200px" class="pull-left"/>
+        </div>
 
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table table-striped">
+
+                    <tbody>
+
+                    <tr>
+                        <td>Phone Number:</td>
+                        <td>{{placeDetail.formatted_phone_number}}</td>
+
+                    </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td>{{placeDetail.rating}}/5</td>
+
+                    </tr>
+                    <tr>
+                        <td>Open</td>
+                        <td>{{placeDetail.opening_hours.open_now}}</td>
+
+                    </tr>
+
+                    <tr>
+                        <td>Address</td>
+                        <td>{{placeDetail.formatted_address}}</td>
+
+                    </tr>
+
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+        </div>
     </div>
-
+    <br><br>
+    <div ng-include="'./views/comment/comment.view.html'"></div>
 </div>
+

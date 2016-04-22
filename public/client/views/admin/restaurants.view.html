@@ -22,19 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>
-                <input ng-model="restaurant._id" type="text" class="form-control" id="inputRestaurantId" placeholder="name">
-            </td>
-            <td>
-                <input ng-model="restaurant.name" type="text" class="form-control" id="inputRestaurantName" placeholder="name">
-            </td>
 
-            <td>
-                <a ng-click="addRestaurant(restaurant)" class="glyphicon glyphicon-plus"></a>
-                <a ng-click="updateRestaurant(restaurant)" class="glyphicon glyphicon-ok"></a>
-            </td>
-        </tr>
 
             <tr ng-repeat="restaurant in scopeRestaurantList"
             ng-class="{'success' : $index == selectedFormIndex}">

@@ -6,6 +6,7 @@
     function PlaceDetailController($scope, $rootScope, $location, $routeParams, GooglePlaces) {
 
         $scope.entityId = $routeParams.placeId;
+        console.log($scope.entityId);
 
         GooglePlaces
             .getDetail($scope.entityId)

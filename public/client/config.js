@@ -63,7 +63,6 @@
                     loggedin: checkLoggedin
                 }
             })
-
             .when("/search-restaurant", {
                 templateUrl: "views/search/restaurant-search.view.html",
                 controller: "RestaurantSearchController",
@@ -71,7 +70,6 @@
                     loggedin: checkLoggedin
                 }
             })
-
             .when("/search-destination", {
                 templateUrl: "views/search/destination-search.view.html",
                 controller: "DestinationSearchController",
@@ -118,9 +116,6 @@
                     loggedin: checkLoggedin
                 }
             })
-
-
-
             .when("/userdetils", {
                 templateUrl: "views/admin/user-search.view.html",
                 controller: "UserDetailController",
@@ -196,11 +191,17 @@
             })
             .when("/detail/:foodId", {
                 templateUrl: "views/search/food.detail.view.html",
-                controller: "FoodDetailController"
+                controller: "FoodDetailController",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/placedetail/:placeId", {
                 templateUrl: "views/search/place.detail.view.html",
-                controller: "PlaceDetailController"
+                controller: "PlaceDetailController",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .otherwise({
                 redirectTo: "/home"

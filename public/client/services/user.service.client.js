@@ -14,10 +14,15 @@
             findUserByUserName: findUserByUserName,
             login: login,
             register : register,
-            searchUserByUserName: searchUserByUserName
+            searchUserByUserName: searchUserByUserName,
+            logout : logout
 
         };
         return api;
+
+        function logout(){
+            return $http.get('/api/logout');
+        }
 
         function searchUserByUserName(username){
             return $http.get('/api/user?flag=true&username='+username);

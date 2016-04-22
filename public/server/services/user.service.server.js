@@ -14,7 +14,7 @@ module.exports = function(app, userModel){
     app.post('/api/login',    passport.authenticate('local'), login);
     app.get('/api/loggedin', loggedin);
     app.post  ('/api/register', register);
-
+    app.get('/api/logout',logout);
     app.get('/api/user',getUsers);
     app.get('/api/user/:id',findUserById);
     app.post('/api/user', createUser);
@@ -105,7 +105,7 @@ module.exports = function(app, userModel){
 
     function logout(req, res) {
         req.logOut();
-        res.send(200);
+        res.sendStatus(200);
     }
 
     function loggedin(req, res) {

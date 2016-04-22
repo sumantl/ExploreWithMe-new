@@ -3,13 +3,18 @@
         .module('ExploreWithMeApp')
         .controller("HeaderController", HeaderController);
 
-    function HeaderController($scope,$rootScope) {
+    function HeaderController($scope,$rootScope, UserService) {
 
         $scope.logout = logout;
 
         function logout(){
 
-            $rootScope.user=null;
+
+            UserService
+                .logout()
+                .then (function(response){
+                    $rootScope.user=null;
+                });
         }
 
 
